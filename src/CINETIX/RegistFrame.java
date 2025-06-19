@@ -4,8 +4,10 @@
  */
 package CINETIX;
 
-import java.awt.Cursor;
-import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import UserJpaController.java.JOptionPane;
 
 /**
  *
@@ -150,16 +152,32 @@ public class RegistFrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Password maksimal 10 karakter.");
         return;
     } 
-        try(connection kon = user.getConnection()){
-            String check = "SELECT*From user WHERE username=?";
-            PreparedStatement psCheck = kon.prepareStatement(check);
-            psCheck.setString(1,username);
-            
-            Resultset rs = psCheck
+      try (Connection conn = koneksi.getConnection()) {
+        String check = "SELECT * FROM user WHERE username=?";
+        PreparedStatement psCheck = conn.prepareStatement(check);
+        psCheck.setString(1, username);
+
+
+        ResultSet rs = psCheck.executeQuery();
+        if (rs.next()) {
+            JOptionPane.showMessageDialog(this, "Username sudah digunakan!");
+            return;
         }
-     this.dispose();
-         new DaftarFilm().setVisible(true
-     new LoginFrame().setVisible(true);
+         String sql = "INSERT INTO user (username, password) VALUES (?, ?)";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, username);
+        ps.setString(2, password);
+        ps.executeUpdate();
+
+        JOptionPane.showMessageDialog(this, "Register berhasil!");
+        this.dispose(); new LoginFrame().setVisible(true);
+    } catch (Exception e) {
+        e.printStackTrace(); 
+        JOptionPane.showMessageDialog(this, "Terjadi error saat register: " + e.getMessage());
+
+
+    }
+
     }//GEN-LAST:event_tombolOkeActionPerformed
 
     private void inputPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPasswordActionPerformed

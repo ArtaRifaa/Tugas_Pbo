@@ -15,6 +15,9 @@ public class BeliTiket extends javax.swing.JFrame {
      */
     public BeliTiket() {
         initComponents();
+        this.setSize(680, 440); // Ukuran disesuaikan dengan SS
+    this.setLocationRelativeTo(null);
+    this.setResizable(false); 
     }
 
     /**
@@ -43,6 +46,7 @@ public class BeliTiket extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 0));
@@ -64,60 +68,116 @@ public class BeliTiket extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 51, 0));
         jLabel3.setText("Nomor Identitas");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 100, 90, 16);
+        jLabel3.setBounds(20, 100, 110, 16);
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 51, 0));
         jLabel4.setText("Tiket :");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 140, 31, 16);
+        jLabel4.setBounds(20, 140, 70, 16);
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 51, 0));
         jLabel5.setText("Pilih Film");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(20, 180, 50, 16);
+        jLabel5.setBounds(20, 180, 110, 16);
 
+        jButton1.setBackground(new java.awt.Color(255, 51, 0));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setText("OKE");
         getContentPane().add(jButton1);
-        jButton1.setBounds(560, 360, 72, 30);
+        jButton1.setBounds(560, 360, 100, 30);
 
+        jButton2.setBackground(new java.awt.Color(255, 51, 0));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setText("Kembali");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2);
-        jButton2.setBounds(10, 370, 73, 23);
+        jButton2.setBounds(10, 370, 100, 23);
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 51, 0));
         jLabel6.setText("Pilih Bangku");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(20, 220, 70, 16);
+        jLabel6.setBounds(20, 220, 120, 16);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 Kakak 7 Ponakan", "Jumbo", "Pengantin Iblis", "Final Destination Bloodlines", "Perayaan Mati Rasa", "keluarga Super Irit" }));
+        jComboBox1.setPreferredSize(new java.awt.Dimension(64, 22));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(200, 170, 300, 22);
+        jComboBox1.setBounds(200, 180, 230, 22);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4" }));
+        jComboBox2.setPreferredSize(new java.awt.Dimension(64, 22));
         getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(200, 200, 300, 22);
+        jComboBox2.setBounds(200, 220, 230, 22);
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(200, 60, 300, 22);
+        jTextField1.setBounds(200, 60, 230, 22);
         getContentPane().add(jTextField2);
-        jTextField2.setBounds(200, 90, 300, 22);
+        jTextField2.setBounds(200, 90, 230, 22);
 
+        jButton3.setBackground(new java.awt.Color(255, 51, 0));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setText("Deskripsi bangku");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3);
         jButton3.setBounds(400, 360, 150, 30);
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 51, 0));
         jLabel7.setText("Pilih Tanggal");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(20, 260, 80, 16);
-        getContentPane().add(jDateChooser1);
-        jDateChooser1.setBounds(200, 250, 300, 22);
 
+        jDateChooser1.setPreferredSize(new java.awt.Dimension(64, 22));
+        getContentPane().add(jDateChooser1);
+        jDateChooser1.setBounds(200, 260, 230, 22);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 51, 0));
         jLabel8.setText("Metode Pembayaran");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(20, 300, 150, 16);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Transfer", "Cash" }));
+        jComboBox3.setPreferredSize(new java.awt.Dimension(64, 22));
         getContentPane().add(jComboBox3);
-        jComboBox3.setBounds(200, 290, 300, 22);
+        jComboBox3.setBounds(200, 300, 230, 22);
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 680, 410);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         this.dispose();
+         new TampilanAwal().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         this.dispose();
+         new DeskripsiBangku().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,6 +230,7 @@ public class BeliTiket extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables

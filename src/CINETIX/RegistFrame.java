@@ -18,6 +18,9 @@ public class RegistFrame extends javax.swing.JFrame {
      */
     public RegistFrame() {
         initComponents();
+    setSize(650, 500);
+    setLocationRelativeTo(null); // Menempatkan frame di tengah layar
+    setVisible(true); 
     }
 
     /**
@@ -29,7 +32,6 @@ public class RegistFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Title = new javax.swing.JLabel();
         registNama = new javax.swing.JLabel();
         inputNama = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -38,22 +40,18 @@ public class RegistFrame extends javax.swing.JFrame {
         labelAkun = new javax.swing.JLabel();
         tombolOke = new javax.swing.JButton();
         inputPassword = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        Title = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().setLayout(null);
 
-        Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Title.setForeground(new java.awt.Color(255, 51, 0));
-        Title.setText("CineTix");
-        getContentPane().add(Title);
-        Title.setBounds(270, 40, 90, 32);
-
         registNama.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        registNama.setForeground(new java.awt.Color(255, 204, 204));
+        registNama.setForeground(new java.awt.Color(255, 51, 0));
         registNama.setText("Buat Username Anda");
         getContentPane().add(registNama);
-        registNama.setBounds(60, 120, 140, 20);
+        registNama.setBounds(60, 100, 140, 20);
 
         inputNama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,20 +59,20 @@ public class RegistFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inputNama);
-        inputNama.setBounds(59, 148, 370, 22);
+        inputNama.setBounds(60, 140, 440, 22);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 51, 0));
         jLabel3.setText("Buat Password Anda");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(59, 194, 135, 20);
+        jLabel3.setBounds(60, 180, 137, 20);
 
         labelPassword.setBackground(new java.awt.Color(255, 255, 255));
         labelPassword.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         labelPassword.setForeground(new java.awt.Color(255, 51, 0));
         labelPassword.setText("Password  Maximal 10 karakter");
         getContentPane().add(labelPassword);
-        labelPassword.setBounds(59, 248, 200, 16);
+        labelPassword.setBounds(60, 240, 200, 16);
 
         tampilPassword.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tampilPassword.setForeground(new java.awt.Color(255, 51, 0));
@@ -85,7 +83,7 @@ public class RegistFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tampilPassword);
-        tampilPassword.setBounds(59, 270, 214, 20);
+        tampilPassword.setBounds(60, 270, 214, 20);
 
         labelAkun.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         labelAkun.setForeground(new java.awt.Color(255, 0, 0));
@@ -99,19 +97,18 @@ public class RegistFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(labelAkun);
-        labelAkun.setBounds(85, 325, 180, 16);
+        labelAkun.setBounds(200, 420, 180, 16);
 
-        tombolOke.setBackground(new java.awt.Color(0, 0, 0));
         tombolOke.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tombolOke.setForeground(new java.awt.Color(255, 51, 0));
-        tombolOke.setText("OKE");
+        tombolOke.setText("Buat Akun");
         tombolOke.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tombolOkeActionPerformed(evt);
             }
         });
         getContentPane().add(tombolOke);
-        tombolOke.setBounds(500, 430, 137, 32);
+        tombolOke.setBounds(50, 310, 450, 32);
 
         inputPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,11 +116,18 @@ public class RegistFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inputPassword);
-        inputPassword.setBounds(60, 220, 370, 22);
+        inputPassword.setBounds(60, 210, 440, 22);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CINETIX/Netflix-Background.jpg"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, -20, 940, 600);
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+
+        Title.setBackground(new java.awt.Color(255, 255, 255));
+        Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Title.setForeground(new java.awt.Color(255, 51, 0));
+        Title.setText("Buat Akun");
+        jPanel1.add(Title);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 640, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -145,9 +149,16 @@ public class RegistFrame extends javax.swing.JFrame {
     if (password.length() >= 10) {
         JOptionPane.showMessageDialog(this, "Password maksimal 10 karakter.");
         return;
-    } else {
-        
-    }
+    } 
+        try(connection kon = user.getConnection()){
+            String check = "SELECT*From user WHERE username=?";
+            PreparedStatement psCheck = kon.prepareStatement(check);
+            psCheck.setString(1,username);
+            
+            Resultset rs = psCheck
+        }
+     this.dispose();
+         new DaftarFilm().setVisible(true
      new LoginFrame().setVisible(true);
     }//GEN-LAST:event_tombolOkeActionPerformed
 
@@ -197,8 +208,8 @@ public class RegistFrame extends javax.swing.JFrame {
     private javax.swing.JLabel Title;
     private javax.swing.JTextField inputNama;
     private javax.swing.JPasswordField inputPassword;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelAkun;
     private javax.swing.JLabel labelPassword;
     private javax.swing.JLabel registNama;

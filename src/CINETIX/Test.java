@@ -21,7 +21,7 @@ public class Test{
         public void run() {
             RegistFrame frame = new RegistFrame();
             frame.setTitle("CINETIX");
-            frame.setSize(750, 600);
+            frame.setSize(600, 500);
             frame.setLocationRelativeTo(null);
             frame.setResizable(false);
             frame.setVisible(true);

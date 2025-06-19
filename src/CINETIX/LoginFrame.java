@@ -5,18 +5,107 @@
 package CINETIX;
 
 import java.awt.Cursor;
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author Arta
  */
 public class LoginFrame extends javax.swing.JFrame {
+    public interface UserAction {
+        /**
+     * Melakukan proses login berdasarkan data pengguna.
+     * Harus diimplementasikan oleh class yang mengimplementasi interface ini.
+     */
+    void login(); // abstract
+    /**
+     * Menampilkan pesan sambutan standar untuk pengguna.
+     * Dapat dipanggil langsung tanpa membuat objek.
+     */
+    static void welcomeMessage() {
+        System.out.println("Selamat datang di aplikasi!");
+        /**
+     * Menampilkan peran (role) dari pengguna.
+     * Bisa digunakan langsung oleh class yang mengimplementasi.
+     */
+    }
+
+    default void showRole(String role) {
+        System.out.println("Login sebagai: " + role);
+    }
+}
+    public class LoginProcessor implements UserAction {
+    private String username;
+    private String password;
+    private String role;
+    /**
+     * Constructor untuk menginisialisasi data login.
+     */
+
+    public LoginProcessor(String username, String password, String role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+     /**
+     * Mengecek apakah data login sesuai dengan akun yang tersedia.
+     * Menampilkan hasil login ke console.
+     */
+    @Override
+    public void login() {
+        if (username.equals("admin") && password.equals("admin123") && role.equals("Admin")) {
+            System.out.println("Login berhasil sebagai Admin.");
+        } else if (username.equals("user") && password.equals("user123") && role.equals("User")) {
+            System.out.println("Login berhasil sebagai User.");
+        } else {
+            System.out.println("Login gagal.");
+        }
+    }
+}
+    public class Person {
+    protected String name;
+    
+    /**
+     * Constructor untuk membuat objek Person.
+     */
+
+    public Person(String name) {
+        this.name = name;
+    }
+    /**
+     * Menampilkan informasi nama ke console.
+     */
+    public void displayInfo() {
+        System.out.println("Nama: " + name);
+    }
+}
+
+public class User extends Person {
+    private String role;
+    /**
+     * Constructor untuk membuat objek User dengan nama dan peran.
+     */
+
+    public User(String name, String role) {
+        super(name);
+        this.role = role;
+    }
+    /**
+     * Menampilkan informasi user termasuk nama dan peran.
+     */
+    public void displayUser() {
+        super.displayInfo();
+        System.out.println("Sebagai: " + role);
+    }
+}
 
     /**
      * Creates new form LoginFrame
      */
     public LoginFrame() {
         initComponents();
+        setSize(650, 500);
+       setLocationRelativeTo(null); // Menempatkan frame di tengah layar
+         setVisible(true); 
     }
 
     /**
@@ -32,11 +121,12 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Isinama = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        inputPassword1 = new javax.swing.JPasswordField();
+        Isipass = new javax.swing.JPasswordField();
         tampilPassword1 = new javax.swing.JCheckBox();
-        jButton2 = new javax.swing.JButton();
+        Login = new javax.swing.JButton();
+        BalikKeRegis = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,17 +136,17 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(251, 51, 0));
-        jLabel1.setText("CineTix");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CINETIX/LogoCineTix2.png"))); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(310, 10, 84, 32);
+        jLabel1.setBounds(570, 10, 84, 60);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(251, 51, 0));
         jLabel2.setText("Masukkan Username Anda");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(70, 80, 177, 20);
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(73, 108, 301, 22);
+        jPanel1.add(Isinama);
+        Isinama.setBounds(73, 108, 390, 22);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(251, 51, 0));
@@ -64,13 +154,13 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(70, 150, 174, 20);
 
-        inputPassword1.addActionListener(new java.awt.event.ActionListener() {
+        Isipass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputPassword1ActionPerformed(evt);
+                IsipassActionPerformed(evt);
             }
         });
-        jPanel1.add(inputPassword1);
-        inputPassword1.setBounds(73, 174, 301, 22);
+        jPanel1.add(Isipass);
+        Isipass.setBounds(73, 174, 390, 22);
 
         tampilPassword1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tampilPassword1.setForeground(new java.awt.Color(251, 51, 0));
@@ -83,76 +173,97 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel1.add(tampilPassword1);
         tampilPassword1.setBounds(73, 202, 150, 20);
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(251, 51, 0));
-        jButton2.setText("OKE");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Login.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Login.setForeground(new java.awt.Color(251, 51, 0));
+        Login.setText("Masuk");
+        Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                LoginActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(598, 287, 96, 37);
+        jPanel1.add(Login);
+        Login.setBounds(70, 290, 390, 40);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(251, 51, 0));
-        jLabel5.setText("Buat Akun Yukk");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        BalikKeRegis.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        BalikKeRegis.setForeground(new java.awt.Color(251, 51, 0));
+        BalikKeRegis.setText("Buat Akun Yukk, Klik disini");
+        BalikKeRegis.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                BalikKeRegisMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel5MouseEntered(evt);
+                BalikKeRegisMouseEntered(evt);
             }
         });
+        jPanel1.add(BalikKeRegis);
+        BalikKeRegis.setBounds(170, 360, 170, 10);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(251, 51, 0));
+        jLabel5.setText("Masuk!");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(90, 276, 100, 10);
+        jLabel5.setBounds(270, 20, 70, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
+        String username = Isinama.getText();
+    String password = new String(Isipass.getPassword());
+    
+     if (username.isEmpty() || password.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Username dan Password tidak boleh kosong!");
+        return;
+    } else
+
+    if (password.length() >= 10) {
+        JOptionPane.showMessageDialog(this, "Password maksimal 10 karakter.");
+        return;
+    } else {
+        
+    }
           this.dispose();
          new TampilanAwal().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_LoginActionPerformed
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void BalikKeRegisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BalikKeRegisMouseClicked
         // TODO add your handling code here:
              this.dispose();
          new RegistFrame().setVisible(true);
-    }//GEN-LAST:event_jLabel5MouseClicked
+    }//GEN-LAST:event_BalikKeRegisMouseClicked
 
-    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+    private void BalikKeRegisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BalikKeRegisMouseEntered
         // TODO add your handling code here:
-         jLabel5.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_jLabel5MouseEntered
+         BalikKeRegis.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_BalikKeRegisMouseEntered
 
     private void tampilPassword11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tampilPassword11ActionPerformed
         // TODO add your handling code here:
         if (tampilPassword1.isSelected()) {
-            inputPassword1.setEchoChar((char) 0);
+            Isipass.setEchoChar((char) 0);
         } else {
-            inputPassword1.setEchoChar('*');
+            Isipass.setEchoChar('*');
 
         }
     }//GEN-LAST:event_tampilPassword11ActionPerformed
 
-    private void inputPassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPassword1ActionPerformed
+    private void IsipassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IsipassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputPassword1ActionPerformed
+    }//GEN-LAST:event_IsipassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,15 +301,16 @@ public class LoginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField inputPassword1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel BalikKeRegis;
+    private javax.swing.JTextField Isinama;
+    private javax.swing.JPasswordField Isipass;
+    private javax.swing.JButton Login;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JCheckBox tampilPassword1;
     // End of variables declaration//GEN-END:variables
 }

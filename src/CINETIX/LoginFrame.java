@@ -4,6 +4,11 @@
  */
 package CINETIX;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.Cursor;
 import javax.swing.JOptionPane;
 /**
@@ -11,6 +16,16 @@ import javax.swing.JOptionPane;
  * @author Arta
  */
 public class LoginFrame extends javax.swing.JFrame {
+
+    private static class Admin {
+
+        public Admin() {
+        }
+
+        private void setVisible(boolean b) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+    }
     public interface UserAction {
         /**
      * Melakukan proses login berdasarkan data pengguna.
@@ -128,6 +143,7 @@ public class User extends Person {
         Login = new javax.swing.JButton();
         BalikKeRegis = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        role = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -204,6 +220,10 @@ public class User extends Person {
         jPanel1.add(jLabel5);
         jLabel5.setBounds(270, 20, 70, 30);
 
+        role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "masuk sebagai", "admin", "user" }));
+        jPanel1.add(role);
+        role.setBounds(70, 240, 150, 22);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -233,11 +253,38 @@ public class User extends Person {
     if (password.length() >= 10) {
         JOptionPane.showMessageDialog(this, "Password maksimal 10 karakter.");
         return;
-    } else {
-        
     }
-          this.dispose();
-         new TampilanAwal().setVisible(true);
+      if (username.equals("admin") && password.equals("admin123") && role.equals("admin")) {
+        JOptionPane.showMessageDialog(this, "Login berhasil sebagai Admin");
+
+        Admin admin = new Admin(); // Ganti dengan nama frame admin kamu
+        admin.setVisible(true);
+        this.dispose();
+        new Admin().setVisible(true);
+        return;
+    }
+      if (role.equals("user")) {
+     
+     
+     try (Connection conn = koneksi.getConnection()) {
+        String sql = "SELECT * FROM user WHERE username=? AND password=?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, username);
+        stmt.setString(2, password);
+        
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            JOptionPane.showMessageDialog(this, "Login Berhasil!");
+            JOptionPane.showMessageDialog(this,"Selamat Datang " + username);
+            new TampilanAwal().setVisible(true);
+            } else {
+            JOptionPane.showMessageDialog(this, "Username atau password salah!", "Login Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+         } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Terjadi Kesalahan Database", "Error", JOptionPane.ERROR_MESSAGE);
+    }        
+      }
     }//GEN-LAST:event_LoginActionPerformed
 
     private void BalikKeRegisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BalikKeRegisMouseClicked
@@ -311,6 +358,7 @@ public class User extends Person {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> role;
     private javax.swing.JCheckBox tampilPassword1;
     // End of variables declaration//GEN-END:variables
 }

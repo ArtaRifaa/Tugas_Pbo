@@ -4,10 +4,11 @@
  */
 package CINETIX;
 
+import java.awt.Cursor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import UserJpaController.java.JOptionPane;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,10 +41,11 @@ public class RegistFrame extends javax.swing.JFrame {
         labelPassword = new javax.swing.JLabel();
         tampilPassword = new javax.swing.JCheckBox();
         labelAkun = new javax.swing.JLabel();
-        tombolOke = new javax.swing.JButton();
         inputPassword = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        tombolOke = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -101,17 +103,6 @@ public class RegistFrame extends javax.swing.JFrame {
         getContentPane().add(labelAkun);
         labelAkun.setBounds(200, 420, 180, 16);
 
-        tombolOke.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        tombolOke.setForeground(new java.awt.Color(255, 51, 0));
-        tombolOke.setText("Buat Akun");
-        tombolOke.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolOkeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tombolOke);
-        tombolOke.setBounds(50, 310, 450, 32);
-
         inputPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputPasswordActionPerformed(evt);
@@ -121,12 +112,26 @@ public class RegistFrame extends javax.swing.JFrame {
         inputPassword.setBounds(60, 210, 440, 22);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Title.setBackground(new java.awt.Color(255, 255, 255));
         Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         Title.setForeground(new java.awt.Color(255, 51, 0));
         Title.setText("Buat Akun");
-        jPanel1.add(Title);
+        jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 5, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arta\\Documents\\NetBeansProjects\\CINETIX\\src\\CINETIX\\LogoCineTix2.png")); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, -1, -1));
+
+        tombolOke.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tombolOke.setForeground(new java.awt.Color(255, 51, 0));
+        tombolOke.setText("Buat Akun");
+        tombolOke.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolOkeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(tombolOke, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 450, 32));
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 640, 480);
@@ -226,6 +231,7 @@ public class RegistFrame extends javax.swing.JFrame {
     private javax.swing.JLabel Title;
     private javax.swing.JTextField inputNama;
     private javax.swing.JPasswordField inputPassword;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelAkun;

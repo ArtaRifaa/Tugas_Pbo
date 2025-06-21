@@ -110,7 +110,7 @@ public class BeliTiket extends javax.swing.JFrame {
         jumlahTiket = new javax.swing.JTextField();
         nomorIdentitas = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        TextArea = new javax.swing.JTextArea();
         buttonOk = new javax.swing.JButton();
         pilihBangku = new javax.swing.JTextField();
 
@@ -214,9 +214,9 @@ public class BeliTiket extends javax.swing.JFrame {
         jPanel1.add(jumlahTiket, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 230, -1));
         jPanel1.add(nomorIdentitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 230, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        TextArea.setColumns(20);
+        TextArea.setRows(5);
+        jScrollPane1.setViewportView(TextArea);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 200, 270));
 
@@ -320,7 +320,7 @@ public class BeliTiket extends javax.swing.JFrame {
                 +"selamat Menonton";
                 
 
-        jTextArea1.setText(isiStruk);
+        TextArea.setText(isiStruk);
         JOptionPane.showMessageDialog(this, "Tiket berhasil dibeli dan disimpan ke database!");
 
     } catch (Exception e) {
@@ -370,6 +370,7 @@ public class BeliTiket extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea TextArea;
     private javax.swing.JButton buttonBangku;
     private javax.swing.JButton buttonKembali;
     private javax.swing.JButton buttonOk;
@@ -385,7 +386,6 @@ public class BeliTiket extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jumlahTiket;
     private javax.swing.JTextField namaPembeli;
     private javax.swing.JTextField nomorIdentitas;

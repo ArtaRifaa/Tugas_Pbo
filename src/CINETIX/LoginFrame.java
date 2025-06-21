@@ -11,6 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.Cursor;
 import javax.swing.JOptionPane;
+import CINETIX.AdminFrame;
+
+
 /**
  *
  * @author Arta
@@ -242,49 +245,68 @@ public class User extends Person {
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
-        String username = Isinama.getText();
+       
+    String username = Isinama.getText();
     String password = new String(Isipass.getPassword());
-    
-     if (username.isEmpty() || password.isEmpty()) {
+    String selectedRole = role.getSelectedItem().toString();
+
+    // Validasi input
+    if (username.isEmpty() || password.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Username dan Password tidak boleh kosong!");
         return;
-    } else
+    }
 
-    if (password.length() >= 10) {
+    if (password.length() > 10) {
         JOptionPane.showMessageDialog(this, "Password maksimal 10 karakter.");
         return;
     }
-      if (username.equals("admin") && password.equals("admin123") && role.equals("admin")) {
-        JOptionPane.showMessageDialog(this, "Login berhasil sebagai Admin");
 
-        Admin admin = new Admin(); // Ganti dengan nama frame admin kamu
-        admin.setVisible(true);
-        this.dispose();
-        new Admin().setVisible(true);
+    if (selectedRole.equalsIgnoreCase("masuk sebagai")) {
+        JOptionPane.showMessageDialog(this, "Silakan pilih peran terlebih dahulu!");
         return;
     }
-      if (role.equals("user")) {
-     
-     
-     try (Connection conn = koneksi.getConnection()) {
-        String sql = "SELECT * FROM user WHERE username=? AND password=?";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, username);
-        stmt.setString(2, password);
-        
-        ResultSet rs = stmt.executeQuery();
-        if (rs.next()) {
-            JOptionPane.showMessageDialog(this, "Login Berhasil!");
-            JOptionPane.showMessageDialog(this,"Selamat Datang " + username);
-            new TampilanAwal().setVisible(true);
-            } else {
-            JOptionPane.showMessageDialog(this, "Username atau password salah!", "Login Gagal", JOptionPane.ERROR_MESSAGE);
+
+    // Cek admin
+    if (selectedRole.equalsIgnoreCase("admin")) {
+        if (username.equals("admin") && password.equals("admin123")) {
+            JOptionPane.showMessageDialog(this, "Login berhasil sebagai Admin");
+
+            // Pastikan class Admin kamu extends JFrame dan ada initComponents()
+            new AdminFrame().setVisible(true);
+        this.dispose();
+
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Username atau password admin salah!");
         }
-         } catch (Exception e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Terjadi Kesalahan Database", "Error", JOptionPane.ERROR_MESSAGE);
-    }        
-      }
+        return;
+    }
+
+    // Cek user dari database
+    if (selectedRole.equalsIgnoreCase("user")) {
+        try (Connection conn = koneksi.getConnection()) {
+            String sql = "SELECT * FROM user WHERE username=? AND password=?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "Login berhasil sebagai User!");
+                JOptionPane.showMessageDialog(this, "Selamat Datang " + username);
+                new TampilanAwal().setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Username atau password salah!", "Login Gagal", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Terjadi Kesalahan Database", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+
+
     }//GEN-LAST:event_LoginActionPerformed
 
     private void BalikKeRegisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BalikKeRegisMouseClicked

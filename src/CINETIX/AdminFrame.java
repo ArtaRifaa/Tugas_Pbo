@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 /**
  *
- * @author Faezal Kurniawan
+ * @author Daffa
  */
 public class AdminFrame extends javax.swing.JFrame {
 
@@ -50,12 +50,12 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         updatePembayaran = new javax.swing.JComboBox<>();
-        tglData = new com.toedter.calendar.JDateChooser();
         kembaliLogin = new javax.swing.JButton();
+        tglData = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(17, 109, 110));
 
         tablepembelian.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,8 +75,8 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablepembelian);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 51, 0));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Data Pemesanan");
 
         Update.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -106,12 +106,12 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel4.setFont(new java.awt.Font("Segoe UI Variable", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Jumlah Tiket");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel5.setFont(new java.awt.Font("Segoe UI Variable", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Pilih Film");
 
         updateFilm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 Kakak 7 Ponakan", "Jumbo", "Pengantin Iblis", "Final Destination Bloodlines", "Perayaan Mati Rasa", "keluarga Super Irit", " " }));
@@ -121,16 +121,16 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel6.setFont(new java.awt.Font("Segoe UI Variable", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("pilih Bangku");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel2.setFont(new java.awt.Font("Segoe UI Variable", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("pilih tanggal");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel3.setFont(new java.awt.Font("Segoe UI Variable", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Metode Pembayaran");
 
         updatePembayaran.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Transfer", "Cash" }));
@@ -170,18 +170,18 @@ public class AdminFrame extends javax.swing.JFrame {
                                     .addComponent(updateBangku, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(updateTiket, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(updateFilm, javax.swing.GroupLayout.Alignment.TRAILING, 0, 318, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(updatePembayaran, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tglData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(kembaliLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(211, 211, 211)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tglData, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                                .addComponent(updatePembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(237, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -216,18 +216,18 @@ public class AdminFrame extends javax.swing.JFrame {
                     .addComponent(updateBangku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tglData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addComponent(Hapus)
+                        .addGap(40, 40, 40))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(tglData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(updatePembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(Hapus)
-                        .addGap(40, 40, 40)))
+                        .addGap(24, 24, 24)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -247,6 +247,11 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshActionPerformed
         // TODO add your handling code here:
+        /**
+     * Mengambil dan menampilkan ulang data dari database ke dalam tabel.
+     *
+     * @param evt event dari tombol Refresh
+     */
        try (Connection konnek = koneksi.getConnection()) {
             String sql = "SELECT * FROM pembelian";
             PreparedStatement pst = konnek.prepareStatement(sql);
@@ -279,6 +284,11 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
         // TODO add your handling code here:    
+        /**
+     * Mengupdate data pemesanan berdasarkan pilihan baris yang dipilih di tabel.
+     *
+     * @param evt event dari tombol Update
+     */
         int milih = tablepembelian.getSelectedRow();
     if (milih == -1) {
         JOptionPane.showMessageDialog(this, "Pilih data yang ingin diedit dulu.");
@@ -326,11 +336,22 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void tablepembelianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablepembelianMouseClicked
         // TODO add your handling code here:
+         /**
+     * Event handler saat pengguna mengklik baris di tabel.
+     * (Belum diimplementasikan untuk menampilkan detail ke form input)
+     *
+     * @param evt event klik mouse pada tabel
+     */
         
     }//GEN-LAST:event_tablepembelianMouseClicked
 
     private void HapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusActionPerformed
         // TODO add your handling code here:
+         /**
+     * Menghapus data pemesanan berdasarkan baris yang dipilih di tabel.
+     *
+     * @param evt event dari tombol Hapus
+     */
         int milih = tablepembelian.getSelectedRow();
     if (milih == -1) {
         JOptionPane.showMessageDialog(this, "Pilih yang ingin dihapus.");
@@ -359,10 +380,20 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void updateFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateFilmActionPerformed
         // TODO add your handling code here:
+        /**
+     * Event handler untuk perubahan pilihan combo box film.
+     *
+     * @param evt event dari combo box
+     */
     }//GEN-LAST:event_updateFilmActionPerformed
 
     private void kembaliLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliLoginActionPerformed
         // TODO add your handling code here:
+        /**
+     * Kembali ke tampilan login dari AdminFrame.
+     *
+     * @param evt event dari tombol Kembali
+     */
          this.dispose();
          new LoginFrame().setVisible(true);
     }//GEN-LAST:event_kembaliLoginActionPerformed
@@ -371,6 +402,11 @@ public class AdminFrame extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        /**
+     * Method utama untuk menjalankan tampilan AdminFrame.
+     *
+     * @param args argumen baris perintah (tidak digunakan)
+     */
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

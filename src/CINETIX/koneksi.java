@@ -9,6 +9,7 @@ import java.sql.SQLException;
 /**
  *
  * @author Arta
+ * @author Daffa
  */
 public class koneksi {
     public static Connection getConnection() throws SQLException {

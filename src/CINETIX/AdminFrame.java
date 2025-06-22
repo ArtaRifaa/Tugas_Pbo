@@ -20,7 +20,7 @@ public class AdminFrame extends javax.swing.JFrame {
     public AdminFrame() {
         initComponents();
         JDateChooser tanggalLahir = new JDateChooser();
-        
+         setLocationRelativeTo(null);
         
         
     }

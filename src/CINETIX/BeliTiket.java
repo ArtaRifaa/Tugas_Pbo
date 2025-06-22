@@ -290,8 +290,8 @@ class Tiket extends Pembelian implements CetakStruk {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Pengisian Data Diri :");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 180, -1));
+        jLabel1.setText("Pengisian Pembelian Tiket :");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 240, -1));
         jPanel1.add(tanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 230, -1));
 
         getContentPane().add(jPanel1);
